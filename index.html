@@ -3,13 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>For Bhoomi ❤️</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .buttons {
+      position: relative;
+      height: 60px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ddd;
+      position: absolute;
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>🐱💗</h1>
+<div class="card" id="card">
+  <h1>🐱❤️</h1>
   <h2>Will you be my Valentine?</h2>
 
   <div class="buttons">
@@ -17,18 +61,41 @@
     <button id="noBtn">No 😶</button>
   </div>
 
-  <p class="hint">(No is a little shy 😈)</p>
+  <p style="color:gray;">(No is a little shy 😈)</p>
 </div>
 
-<!-- Audio -->
 <audio id="bgMusic">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<script src="./script.js"></script>
+<script>
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const card = document.getElementById("card");
+  const music = document.getElementById("bgMusic");
+
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = translate(${x}px, ${y}px);
+  });
+
+  yesBtn.addEventListener("click", () => {
+    card.innerHTML = `
+      <h1>Yayyy!! 💖🥰</h1>
+      <p style="font-size:22px;">
+        Bhoomi ❤️<br><br>
+        Thank you for saying YES 💫<br>
+        You just made my heart the happiest today 🥹<br><br>
+        I’d love to make every Valentine special with you 🌹
+      </p>
+      <button onclick="document.getElementById('bgMusic').play()"
+        style="margin-top:20px;padding:12px 22px;border:none;border-radius:25px;background:#ff4d6d;color:white;font-size:16px;">
+        ▶️ Play our song 🎶
+      </button>
+    `;
+  });
+</script>
+
 </body>
 </html>
-
-
-
-
